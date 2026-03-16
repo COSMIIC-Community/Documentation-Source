@@ -15,7 +15,7 @@ This guide introduces the COSMIIC 4-Channel Pulse Generator (PG4), explaining it
 - Optional: Any additional modules (PG4 and/or BP2 Development Boards) may be present while controlling one PG4 module
 - Wireless Link board + USB-C cable
 - MATLAB
-- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Inc/NNP-API) Github repository
+- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Community/NNP-API) Github repository
 
 ---
 

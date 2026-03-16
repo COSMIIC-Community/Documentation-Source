@@ -6,7 +6,7 @@ sidebar_position: 5
 
 Recording and stimulation electrodes
 
-:link: **[Implantables-Electrodes on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-Electrodes)**
+:link: **[Implantables-Electrodes on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-Electrodes)**
 
 ---
 
@@ -50,12 +50,12 @@ The epimysial stimulating electrode is a platinum-iridium disk with a brim suppo
 ### Mechanical Design and Drawings
 All files and drawings for the design of the Electrodes are available on the COSMIIC GitHub here:
 
-:link: **[Implantables-Electrodes/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-Electrodes/tree/main/Mechanical%20Design%20CAD%20Files)**
+:link: **[Implantables-Electrodes/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-Electrodes/tree/main/Mechanical%20Design%20CAD%20Files)**
 
 ### Design Controls and Verification of Electrode Designs
 Specifications and testing for the Electrodes are documented on the COSMIIC GitHub here:
 
-:link: **[Implantables-Verification/Electrodes on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-Verification/tree/main/Electrodes)**
+:link: **[Implantables-Verification/Electrodes on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-Verification/tree/main/Electrodes)**
 
 ## Coming soon...
 

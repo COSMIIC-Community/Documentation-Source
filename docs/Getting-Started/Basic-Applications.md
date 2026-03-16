@@ -14,7 +14,7 @@ Existing applications to get started with the COSMIIC System
 - Optional: Any additional modules (PG4 and/or BP2 Development Boards)
 - Wireless Link board + USB-C cable
 - MATLAB
-- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Inc/NNP-API) Github repository
+- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Community/NNP-API) Github repository
 
 ---
 

@@ -6,7 +6,7 @@ sidebar_position: 3
 
 2-channel EMG module
 
-:link: **[Implantables-BP2-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-BP2-Hardware)**
+:link: **[Implantables-BP2-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-BP2-Hardware)**
 
 ---
 
@@ -29,17 +29,17 @@ The BP is connected to the NNP network through a single network cable. The BP ga
 ### Mechanical Design and Drawings
 All files and drawings for the design of the Biopotential Recording Module are available on the COSMIIC GitHub here:
 
-:link: **[Implantables-BP2-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-BP2-Hardware/tree/main/Mechanical%20Design%20CAD%20Files)**
+:link: **[Implantables-BP2-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-BP2-Hardware/tree/main/Mechanical%20Design%20CAD%20Files)**
 
 ### PCB
 
-:link: **[Implantables-BP2-Hardware/"NNP-DWG-165-001-000 PCB Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-BP2-Hardware/tree/main/NNP-DWG-165-001-000%20BP2%20PCB%20Files)**
+:link: **[Implantables-BP2-Hardware/"NNP-DWG-165-001-000 PCB Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-BP2-Hardware/tree/main/NNP-DWG-165-001-000%20BP2%20PCB%20Files)**
 
 ### Firmware
 
-:link: **[Implantables-BP2-Application on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-BP2-Application)**
+:link: **[Implantables-BP2-Application on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-BP2-Application)**
 
-:link: **[Implantables-RemoteModules-Bootloader on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-RemoteModules-Bootloader)** Note: the common Remote Modules Bootloader source code for the PG4/BP2 module version using an AVR microprocessor is being held private until certain proprietary code segments can be replaced. 
+:link: **[Implantables-RemoteModules-Bootloader on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-RemoteModules-Bootloader)** Note: the common Remote Modules Bootloader source code for the PG4/BP2 module version using an AVR microprocessor is being held private until certain proprietary code segments can be replaced. 
 
 Guidance on the build and flash process are incoming.
 

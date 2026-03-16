@@ -12,11 +12,11 @@ Driver of wireless charging of the COSMIIC System
 
 ### Mechanical Design and Drawings
 
-Source files for the COSMIIC Smart Charger design and assembly will be found here on the COSMIIC GitHub :link: **[Externals-SmartCharger-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Externals-SmartCharger-Hardware)**
+Source files for the COSMIIC Smart Charger design and assembly will be found here on the COSMIIC GitHub :link: **[Externals-SmartCharger-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Community/Externals-SmartCharger-Hardware)**
 
 ### Firmware 
 
-The Smart Charger is controlled by the Wireless Link and uses the same repository for firmware. :link: **[Externals-WirelessLink-Application on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Externals-WirelessLink-Application)**
+The Smart Charger is controlled by the Wireless Link and uses the same repository for firmware. :link: **[Externals-WirelessLink-Application on COSMIIC GitHub](https://github.com/COSMIIC-Community/Externals-WirelessLink-Application)**
 
 :::warning note
 

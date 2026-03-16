@@ -48,7 +48,7 @@ Files containing documentation of the COSMIIC System and user ecosystem in suppl
 
 Note: Attribution is REQUIRED for sharing of documentation, modified or unmodified. In the case you are redistributing COSMIIC documentation, CC-BY-4.0 mandates that "You must give appropriate credit, provide a link to the license, and indicate if changes were made" (per **[legal code page](https://creativecommons.org/licenses/by/4.0/legalcode.en)**).
 
-These materials are mostly hosted on this site and cosmiic.org. This docs.cosmiic.org site is built using Markdown (.md) files and the Docusaurus tool through GitHub Actions in a **[COSMIIC GitHub repository](https://github.com/COSMIIC-Inc/Documentation-Source)**. Files in the /docs/ folder of this repository are licensed under CC-BY-4.0. This includes, but is not limited to...
+These materials are mostly hosted on this site and cosmiic.org. This docs.cosmiic.org site is built using Markdown (.md) files and the Docusaurus tool through GitHub Actions in a **[COSMIIC GitHub repository](https://github.com/COSMIIC-Community/Documentation-Source)**. Files in the /docs/ folder of this repository are licensed under CC-BY-4.0. This includes, but is not limited to...
 
 - Documentation of system components and system architecture, .md and other archival file types
 - Test reports

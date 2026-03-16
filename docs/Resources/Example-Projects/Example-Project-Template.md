@@ -2,7 +2,7 @@
 sidebar_position: 4
 ---
 
-Contribute documentation of your project using the COSMIIC System by submitting a new version of this file at [https://github.com/COSMIIC-Inc/Documentation-Source/blob/main/docs/Resources/Example-Projects/Example-Project-Template.md](https://github.com/COSMIIC-Inc/Documentation-Source/blob/main/docs/Resources/Example-Projects/Example-Project-Template.md) 
+Contribute documentation of your project using the COSMIIC System by submitting a new version of this file at [https://github.com/COSMIIC-Community/Documentation-Source/blob/main/docs/Resources/Example-Projects/Example-Project-Template.md](https://github.com/COSMIIC-Community/Documentation-Source/blob/main/docs/Resources/Example-Projects/Example-Project-Template.md) 
 
 # Example Project Template
 

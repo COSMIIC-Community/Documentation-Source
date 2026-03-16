@@ -14,13 +14,13 @@ This guide introduces the use of the API to control the COSMIIC System through M
 - Optional: Any additional modules (PG4 and/or BP2 Development Boards)
 - Wireless Link board + USB-C cable
 - MATLAB
-- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Inc/NNP-API) git repository
+- Local clone of the [**NNP-API**](https://github.com/COSMIIC-Community/NNP-API) git repository
 
 ---
 
 ## Interfacing with MATLAB
 
-1. Clone the [**NNP-API**](https://github.com/COSMIIC-Inc/NNP-API) repository from the COSMIIC GitHub page to your local device. Follow GitHub instructions for cloning [**here**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+1. Clone the [**NNP-API**](https://github.com/COSMIIC-Community/NNP-API) repository from the COSMIIC GitHub page to your local device. Follow GitHub instructions for cloning [**here**](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 2. Open the NNP-API folder in MATLAB. It will be at Documents/GitHub/NNP-API by default if you use GitHub Desktop to clone.
 3. Connect your Wireless Link to your computer by USB-C cable
 4. Turn on your PM and wait for the bootloader period to end

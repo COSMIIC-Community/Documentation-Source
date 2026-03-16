@@ -28,8 +28,8 @@ The port plug body consists of a PEEK rod cut to length and shaped to fit into t
 
 Drawing of the port plug is available on the COSMIIC GitHub here:
 
-:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files"/"Drawing PDFs"/"NNP-DWG-115-001-000 Port Plug Assembly.pdf" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Hardware/blob/main/Mechanical%20Design%20CAD%20Files/Drawing%20PDFs/NNP-DWG-115-001-000%20Port%20Plug%20Assembly.pdf)**
+:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files"/"Drawing PDFs"/"NNP-DWG-115-001-000 Port Plug Assembly.pdf" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-Hardware/blob/main/Mechanical%20Design%20CAD%20Files/Drawing%20PDFs/NNP-DWG-115-001-000%20Port%20Plug%20Assembly.pdf)**
 
 Parts and assembly design files are available in .pdf, .STEP, ..SLDPRT, .SLDASM in the parent directory 
 
-:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Hardware/blob/main/Mechanical%20Design%20CAD%20Files)**
+:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-Hardware/blob/main/Mechanical%20Design%20CAD%20Files)**
