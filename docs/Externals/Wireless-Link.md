@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Wireless Link
+# WL - Wireless Link
 
 Wireless control of the COSMIIC System
 

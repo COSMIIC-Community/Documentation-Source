@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Smart Charger
+# SC - Smart Charger
 
 Driver of wireless charging of the COSMIIC System
 
