@@ -30,7 +30,7 @@ Make sure `#define WL_IN_CHARGER` is set to `true` in `wirelesslink/src/cmdhandl
 
 ### Change Charger Mode
 
-The Smart Charger can be operated as a standalone device using its buttons or as a computer-controlled device using the NNP-API commands in Matlab. To change presets for standalone use, scroll to the [**Configure**](#configure-smart-charger-button-actions) section below. The following code block shows how the NNP-API can be used to set the charger mode:
+The Smart Charger can be operated as a standalone device using its buttons or as a computer-controlled device using the NNP-API commands in MATLAB. To change presets for standalone use, scroll to the [**Configure**](#configure-smart-charger-button-actions) section below. The following code block shows how the NNP-API can be used to set the charger mode:
 
 ```matlab
 % this example enters the charger into "no feedback mode." Ideal for using the PM in bootloader mode because the PM relies on the wireless energy transfer (does not use batteries) when in bootloader mode.

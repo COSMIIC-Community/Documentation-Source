@@ -38,8 +38,8 @@ All files of this category are hosted across COSMIIC GitHub repositories. This i
     - Module source code (bootloaders and applications)
     - External wireless components source code
 - Software
-    - API in Matlab
-    - Assorted Matlab apps
+    - API in MATLAB
+    - Assorted MATLAB apps
     - Tools and processes, such as custom linters and GitHub Action workflow files
 
 ### Documentation Licensing - CC-BY-4.0
