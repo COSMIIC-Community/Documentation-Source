@@ -45,7 +45,7 @@ The constructor opens a USB serial connection to the Wireless Link at 230400 bau
 
 ### Node Addressing
 
-Most commands require specifying a **node** to address the modules in the COSMIIC System. The node is an identifier assigned to a module that allows it to be uniquely referenced on the CAN network and is used in the NNP-API commands and in embedded scripts. All devices have a node number. The node number can not be changed without engineering intervention, typically through the `rmbootloader.mlapp`. Node number typically exist between 1 and 15 inclusively. By convention, the Power Module is always assigned node number 7 and a former external device called the Control Tower is always assigned node number 8. Each node requires a standardized Object Dictionary (OD) for configuration, communicates using PDOs/SDOs
+Most commands require specifying a **node** to address the modules in the COSMIIC System. The node is an identifier assigned to a module that allows it to be uniquely referenced on the CAN network and is used in the NNP-API commands and in embedded scripts. All devices have a node number. The node number can not be changed without engineering intervention, typically through the `rmbootloader.mlapp`. Node numbers in the COSMIIC System can be between 1 and 14 inclusively. By convention, the Power Module is always assigned node number 7 and a former external device called the Control Tower is always assigned node number 8. Each node requires a standardized Object Dictionary (OD) for configuration, communicates using PDOs/SDOs
 
 | Node Value | Target |
 |---|---|
