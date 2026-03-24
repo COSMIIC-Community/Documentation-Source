@@ -52,7 +52,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/', // Serve the docs at the site's root example.com/docs/intro becomes example.com with other docs at example.com/other-doc
           editUrl: 'https://github.com/COSMIIC-Community/COSMIIC-Documentation/blob/main/',
-
+          showLastUpdateTime: true,
         },
         blog: false, // optional: disable the blog plugin
         theme: {
