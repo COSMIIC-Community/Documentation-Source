@@ -1,16 +1,16 @@
 ---
-sidebar_position: 4
+sidebar_position: 1
 ---
 
-# Software - MATLAB API
+# MATLAB API
 
 What is included in the NNP-API interface on MATLAB
 
 ---
 
-## NNP-API Interface on MATLAB
+## Overview
 
-The NNP-API is the MATLAB-based interface for communicating with the COSMIIC System (originally referred to as the NNP). NNP-API controls the **Wireless Link** (Access Point) device over USB serial to wirelessly communicate with the **Power Module (PM)** radio. The PM can then relay commands to the Remote Modules (RMs) in the system.
+The NNP-API is the MATLAB-based interface for communicating with the COSMIIC System (originally referred to as the NNP). NNP-API controls the **Wireless Link** (Access Point) device over USB serial to wirelessly communicate with the **Power Module (PM)** radio and trigger specified functionality. The PM can then relay commands to the Remote Modules (RMs) in the system.
 
 The interface is implemented as two layered MATLAB classes:
 

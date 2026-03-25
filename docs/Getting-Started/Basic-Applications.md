@@ -20,7 +20,7 @@ Existing applications to get started with the COSMIIC System
 
 ## Common Apps in NNP-API
 
-Open ../NNP-API as your working directory in Matlab and use the following commands in a script or Command Window
+Open ../NNP-API as your working directory in MATLAB and use the following commands in a script or Command Window
 
 
 ```matlab title="commonDevKitCommands.m"
@@ -51,6 +51,5 @@ profiler(nnp)
 %% demonstrate emg recording
 emgRecordRaw(nnp)
 ```
-## Coming soon...
 
-Some "blinky"-like project to familiarize you with the system's network and capabilities
+*For more apps and full descriptions, refer to the [**MATLAB Apps**](/Software/NNP-Apps) page*
