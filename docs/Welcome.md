@@ -18,7 +18,7 @@ The COSMIIC System is based on the Networked Neuroprosthetic (NNP) System, which
 Catch up with our most recent poster: :file_folder: **[COSMIIC Overview October 2024.pdf](./img/cosmiic-poster-2025.pdf)**
 
 <div class= 'pdf-viewer'>
-    <iframe src="https://drive.google.com/file/d/1z1hK98vNul36rA4APGVKF41jmMBdBDy9/preview" width="640" height="480" allow="autoplay"></iframe>
+    <iframe src="https://drive.google.com/file/d/1Pb8ByQsMJMfYb5rJoY_fUWJ8xfXLcfgo/preview" width="640" height="480" allow="autoplay"></iframe>
 </div>
 
 ---
