@@ -10,6 +10,8 @@ Operational Codes that can be used in .nnpscript files
 
 ## OpCode Reference
 
+This page documents all of the operational codes that are native to the PM through the firmware source code at [**app/ScriptInterpreter.c**](https://github.com/COSMIIC-Community/Implantables-PM-App/blob/main/app/ScriptInterpreter.c) and in the NNP-API Script assembler at [**apps/Scripting/assembler.m**](https://github.com/COSMIIC-Community/NNP-API/blob/main/apps/Scripting/assembler.m). These opcodes are used to manipulate in variables, memory, and system state in .nnpscript scripts.
+
 ### Script Control
 
 | OpCode | Op# | Operands | Description |
