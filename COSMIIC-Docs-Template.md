@@ -43,5 +43,6 @@ Checklist to consider when contributing documentation:
 
 - Test builds must be functional with no errors or warnings
 - No broken links
+- Check page order with header value `sidebar_position`
 - Materials fit within CC-BY-4.0 license
 - Content follows guidelines of the COSMIIC community **[Code of Conduct](./docs/Community/Code-of-Conduct.md)**

@@ -56,7 +56,14 @@ Full list of charge modes that can be read or set with `CHG_GET_CHARGEMODE` (0xA
 
 ### Configure Smart Charger Button Actions
 
-After the first build and flash or any following full erase and flash, you must configure the orange and blue buttons. 
+After the first build and flash or any following full erase and flash, you must configure the buttons. You can set 4 actions using a short press or long press at two buttons.
+
+:::tip
+
+- Button 1 = orange, left
+- Button 2 = blue, right
+
+:::
 
 ```matlab
 % 0x30 represents Wireless Link API command for WL_SET_BUTTON_ACTION, first value in array represents button order, 0xFF is a SYNC byte, 0xA1 is the value for CHG_SET_CHARGEMODE, 4 is the length of this internal packet, and the final argument is the "payload" aka the charge mode value that is being set
@@ -64,7 +71,7 @@ After the first build and flash or any following full erase and flash, you must 
 nnp.transmitAP(0x30, [0 0xFF 0xA1 4 2]) 
 % program short press button 2 to start metaldetect
 nnp.transmitAP(0x30, [1 0xFF 0xA1 4 4])
-% program long press button 1 to power down INC
+% program long press button 1 to power down PM
 nnp.transmitAP(0x30, [2 0xFF 0xA1 4 5])
 % program long press button 2 to start autotune
 nnp.transmitAP(0x30, [3 0xFF 0xA1 4 3])
