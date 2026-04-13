@@ -1,6 +1,6 @@
 # README
 
-This repository contains the source code that is built into the docs.cosmiic.org website using the open source [Docusaurus](https://docusaurus.io/), a static webpage generator tool. This repository has GitHub Actions workflows to conduct test builds and deploy the website to docs.cosmiic.org through GitHub Pages and the cosmiic-inc.github.io repository.
+This repository contains the source code that is built into the docs.cosmiic.org website using the open source [Docusaurus](https://docusaurus.io/), a static webpage generator tool. This repository has GitHub Actions workflows to conduct test builds and deploy the website to docs.cosmiic.org through GitHub Pages and the COSMIIC-Community.github.io repository.
 
 # Licensing
 

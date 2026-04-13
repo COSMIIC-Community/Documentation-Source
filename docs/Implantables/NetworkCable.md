@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Power and physical network transmission cable
 
-:link: **[Implantables-NetworkCable on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-NetworkCable)**
+:link: **[Implantables-NetworkCable on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-NetworkCable)**
 
 ---
 
@@ -32,12 +32,12 @@ The total length of the cable varies depending on the location in the body, but 
 ### Mechanical Design and Drawings
 All files and drawings for the design of the Network Cable are available on the COSMIIC GitHub here:
 
-:link: **[Implantables-NetworkCable/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-NetworkCable/tree/main/Mechanical%20Design%20CAD%20Files)**
+:link: **[Implantables-NetworkCable/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-NetworkCable/tree/main/Mechanical%20Design%20CAD%20Files)**
 
 ### Design Controls and Verification
 Specifications and testing for the Network Cable are documented on the COSMIIC GitHub here:
 
-:link: **[Implantables-Verification/Network-Cable on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-Verification/tree/main/NetworkCable)**
+:link: **[Implantables-Verification/Network-Cable on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-Verification/tree/main/NetworkCable)**
 
 ## Coming soon...
 Information on the fabrication process, manufacturing partners, and how to obtain Network Cables will be uploaded soon.

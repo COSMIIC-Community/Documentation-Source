@@ -38,8 +38,8 @@ All files of this category are hosted across COSMIIC GitHub repositories. This i
     - Module source code (bootloaders and applications)
     - External wireless components source code
 - Software
-    - API in Matlab
-    - Assorted Matlab apps
+    - API in MATLAB
+    - Assorted MATLAB apps
     - Tools and processes, such as custom linters and GitHub Action workflow files
 
 ### Documentation Licensing - CC-BY-4.0
@@ -48,7 +48,7 @@ Files containing documentation of the COSMIIC System and user ecosystem in suppl
 
 Note: Attribution is REQUIRED for sharing of documentation, modified or unmodified. In the case you are redistributing COSMIIC documentation, CC-BY-4.0 mandates that "You must give appropriate credit, provide a link to the license, and indicate if changes were made" (per **[legal code page](https://creativecommons.org/licenses/by/4.0/legalcode.en)**).
 
-These materials are mostly hosted on this site and cosmiic.org. This docs.cosmiic.org site is built using Markdown (.md) files and the Docusaurus tool through GitHub Actions in a **[COSMIIC GitHub repository](https://github.com/COSMIIC-Inc/Documentation-Source)**. Files in the /docs/ folder of this repository are licensed under CC-BY-4.0. This includes, but is not limited to...
+These materials are mostly hosted on this site and cosmiic.org. This docs.cosmiic.org site is built using Markdown (.md) files and the Docusaurus tool through GitHub Actions in a **[COSMIIC GitHub repository](https://github.com/COSMIIC-Community/COSMIIC-Documentation)**. Files in the /docs/ folder of this repository are licensed under CC-BY-4.0. This includes, but is not limited to...
 
 - Documentation of system components and system architecture, .md and other archival file types
 - Test reports

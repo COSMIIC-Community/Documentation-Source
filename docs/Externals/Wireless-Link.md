@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Wireless Link
+# WL - Wireless Link
 
 Wireless control of the COSMIIC System
 
@@ -27,7 +27,7 @@ This code is based on:
 
 ### Firmware
 
-:link: **[Externals-WirelessLink-Application on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Externals-WirelessLink-Application)**
+:link: **[Externals-WL-App on COSMIIC GitHub](https://github.com/COSMIIC-Community/Externals-WL-App)**
 
 Guidance on the build and flash process are below.
 
@@ -39,7 +39,7 @@ Make sure to toggle `#define WL_IN_CHARGER` in `wirelesslink/src/cmdhandler.h` t
 
 ### Mechanical Design and Drawings
 
-The Wireless Link is included in the Smart Charger hardware. The source files for the full COSMIIC Smart Charger design and assembly, including the Wireless Link, will be found here on the COSMIIC GitHub :link: **[Externals-SmartCharger-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Externals-SmartCharger-Hardware)**
+The Wireless Link is included in the Smart Charger hardware. The source files for the full COSMIIC Smart Charger design and assembly, including the Wireless Link, will be found here on the COSMIIC GitHub :link: **[Externals-SC-Hardware on COSMIIC GitHub](https://github.com/COSMIIC-Community/Externals-SC-Hardware)**
 
 ---
 

@@ -43,11 +43,11 @@ The COSMIIC System and its networked concept operate through multiple layers of 
 - **Layer 6: NNP API**
   - An API is implemented in MATLAB to communicate bi-directionally with the system through radio. Commands sent through the API will be received by the power module and used to control modules on the network.
   - This API can be used to build MATLAB scripts, App Designer applications, and fully deployed applications. (These will be described in future advanced documentation)
-  - The [**NNP-API repository**](https://github.com/COSMIIC-Inc/NNP-API) is available on the COSMIIC GitHub.
+  - The [**NNP-API repository**](https://github.com/COSMIIC-Community/NNP-API) is available on the COSMIIC GitHub.
   - NNP-API holds several fundamental commands for scripting (i.e. in NNPCORE and NNPHELPERS) and a subdirectory of designed apps with a GUI.
 - **Layer 7: MATLAB Apps**
   - There are several user-ready GUIs made by the COSMIIC team which can be used for operating the device and testing out certain functionalities.
-  - These can be found in the [**NNP-API repository, /apps/ directory**](https://github.com/COSMIIC-Inc/NNP-API)
+  - These can be found in the [**NNP-API repository, /apps/ directory**](https://github.com/COSMIIC-Community/NNP-API)
 
 ---
 

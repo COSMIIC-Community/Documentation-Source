@@ -35,6 +35,6 @@ jobs:
           git config --global user.name "crexroth"
           echo "Install dependencies (clean install) based on package-lock.json"
           npm ci
-          echo "Build and deploy site to COSMIIC-Inc.github.io"
+          echo "Build and deploy site to COSMIIC-Community.github.io"
           npm run deploy
           

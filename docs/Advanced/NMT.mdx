@@ -1,0 +1,534 @@
+---
+sidebar_position: 1
+---
+
+# NMT Commands
+
+Network Management protocol defines the communication and operational modes of the modules
+
+---
+
+import { useState, useMemo } from 'react';
+
+export const nmtCommands = [
+  {
+    name: 'NMT_Start_Nodes', value: '0x01', pm: true, pg4: true, bp2: true,
+    description: "Broadcasts a start command to all nodes, transitioning them out of the pre-operational or stopped state and into their operational mode.",
+  },
+  {
+    name: 'NMT_Stop_Nodes', value: '0x02', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into the Stopped state. Stopped behavior immediately turns off all stimulation. In order to exit from Stopped, the system must receive a Wait mode request first.",
+  },
+  {
+    name: 'NMT_Enter_Patient_Operation', value: '0x03', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_Patient_Control, considered normal operation for a clinical system. Application behavior is handled through the local application.",
+  },
+  {
+    name: 'NMT_Enter_X_Manual', value: '0x04', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_X_Manual. In this mode the stim algorithm runs based on a value of X that is remotely sent to the stim module via SDO. The module then solves for the respective Y channel values (pulse width or amplitude modulation) based on previously loaded profile values.",
+  },
+  {
+    name: 'NMT_Enter_Y_Manual', value: '0x05', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_Y_Manual. Forces the channel value (pulse width or amplitude, or both) based on an SDO message",
+  },
+  {
+    name: 'NMT_Enter_Stop_Stim', value: '0x06', pm: true, pg4: true, bp2: true,
+    description: "Immediately stops all stimulation output. Equivalent to transitioning into the Stopped state.",
+  },
+  {
+    name: 'NMT_Enter_Wait_Mode', value: '0x07', pm: true, pg4: true, bp2: true,
+    description: "Commands all nodes to return to the Waiting state. Waiting is the idle state: modules respond to NMT and SDO messages but do not generate PDO messages. This is a required step before transitioning out of the Stopped state.",
+  },
+  {
+    name: 'NMT_Enter_Patient_Manual', value: '0x08', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_Patient_Manual. Implements a full control loop with a control setpoint supplied by either the BP2 module or the PM and stimulation supplied by the PG4.",
+  },
+  {
+    name: 'NMT_Enter_Produce_X_Manual', value: '0x09', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_Produce_X_Manual. Allows testing of the MES module output without engaging the stim module to produce a pulse. The MES module emits the command signal via PDO, but the PG4 ignores it.",
+  },
+  {
+    name: 'NMT_Do_Save_Cmd', value: '0x0A', pm: true, pg4: true, bp2: true,
+    description: "Saves specified data elements of the Object Dictionary. Can be executed from any state and transitions the state machine back to the state from which it was called. The list of data elements to be saved is available as an array at Object Dictionary location 0x2020.",
+  },
+  {
+    name: 'NMT_Do_Restore_Cmd', value: '0x0B', pm: true, pg4: true, bp2: true,
+    description: "Restores specified data elements of the Object Dictionary. Typically used during a power-on sequence to restore normally volatile settings. When a remote module receives this command it will copy saved values from EEPROM to their respective locations in the Object Dictionary. The Restore command can only be processed if the module is in Waiting mode, and the module returns to Waiting mode upon completion.",
+  },
+  {
+    name: 'NMT_Enter_Record_X', value: '0x0C', pm: true, pg4: true, bp2: true,
+    description: "Transitions all nodes into Mode_Record_X. Generates an application PDO from a BP2 module that can be received by a network device which then stores and forwards the values.",
+  },
+  {
+    name: 'NMT_Enter_Charging_Mode', value: '0x0F', pm: true, pg4: false, bp2: false,
+    description: "Transitions the PM into a charging state.",
+  },
+  {
+    name: 'NMT_Return_Node_Table', value: '0x10', pm: true, pg4: false, bp2: false,
+    description: "Requests all nodes on the network to report their presence. Used by the master to build a table of active nodes.",
+  },
+  {
+    name: 'NMT_Return_Single_Node', value: '0x11', pm: true, pg4: false, bp2: false,
+    description: "Requests a single targeted node to report its presence.",
+  },
+  {
+    name: 'NMT_Group_On', value: '0x20', pm: false, pg4: true, bp2: false,
+    description: "Enables a specific node group. Groups allow the master to address subsets of nodes with a single command.",
+  },
+  {
+    name: 'NMT_Group_Off', value: '0x21', pm: false, pg4: true, bp2: false,
+    description: "Disables a specific node group.",
+  },
+  {
+    name: 'NMT_All_Groups_Off', value: '0x22', pm: false, pg4: true, bp2: false,
+    description: "Disables all groups simultaneously.",
+  },
+  {
+    name: 'NMT_Reset_Node', value: '0x81', pm: true, pg4: true, bp2: true,
+    description: "Performs a software reset of the targeted node.",
+  },
+  {
+    name: 'NMT_Reset_Comunication', value: '0x82', pm: true, pg4: true, bp2: true,
+    description: "Resets the communication layer of the targeted node without a full application reset.",
+  },
+  {
+    name: 'NMT_Enter_Bootloader', value: '0x83', pm: true, pg4: true, bp2: true,
+    description: "Commands the targeted node to enter its bootloader for firmware update.",
+  },
+  {
+    name: 'NMT_Start_Sync', value: '0x84', pm: true, pg4: true, bp2: true,
+    description: "When sent with a local address (0x07), starts the sync pulse on the PM as the NMT master. If a sync pulse needs to originate from a slave module, the NodeId of the target module must be specified in the NMT message. Note that some NMT states also automatically start sync pulses.",
+  },
+  {
+    name: 'NMT_Stop_Sync', value: '0x85', pm: true, pg4: true, bp2: true,
+    description: "Stops the sync pulse on the targeted node.",
+  },
+  {
+    name: 'NMT_Start_PDO', value: '0x86', pm: true, pg4: true, bp2: true,
+    description: "Starts PDO transmission on the targeted node.",
+  },
+  {
+    name: 'NMT_Stop_PDO', value: '0x87', pm: true, pg4: true, bp2: true,
+    description: "Stops PDO transmission on the targeted node.",
+  },
+  {
+    name: 'NMT_Set_RTC', value: '0x88', pm: true, pg4: false, bp2: false,
+    description: "Copies the date-time data from the Object Dictionary to the real-time clock register in the PM. The clock must be halted using NMT_Halt_RTC (0x97) before a new value can be loaded.",
+  },
+  {
+    name: 'NMT_Set_Alarm', value: '0x89', pm: true, pg4: false, bp2: false,
+    description: "Configures an alarm in the RTC of the targeted module.",
+  },
+  {
+    name: 'NMT_Reset_Watchdog', value: '0x8A', pm: true, pg4: true, bp2: true,
+    description: "Resets the watchdog timer in the targeted module.",
+  },
+  {
+    name: 'NMT_Radio_WOR_ON', value: '0x8B', pm: true, pg4: false, bp2: false,
+    description: "Enables Wake-on-Radio (WOR) mode on the targeted node's radio.",
+  },
+  {
+    name: 'NMT_Radio_WOR_OFF', value: '0x8C', pm: true, pg4: false, bp2: false,
+    description: "Disables Wake-on-Radio (WOR) mode on the targeted node's radio.",
+  },
+  {
+    name: 'NMT_Run_Script', value: '0x8D', pm: true, pg4: false, bp2: false,
+    description: "Triggers execution of a loaded script on the targeted node.",
+  },
+  {
+    name: 'NMT_Enable_Script(s)', value: '0x8E', pm: true, pg4: false, bp2: false,
+    description: "Enables script execution on the targeted node.",
+  },
+  {
+    name: 'NMT_Disable_Script(s)', value: '0x8F', pm: true, pg4: false, bp2: false,
+    description: "Disables script execution on the targeted node.",
+  },
+  {
+    name: 'NMT_Delete_Script', value: '0x90', pm: true, pg4: false, bp2: false,
+    description: "The PM uses this value as NMT_Delete_Script; the BP2 and PG4 use it as NMT_Erase_Serial_Eprom. These are functionally similar commands that share the same command byte across different module types.",
+  },
+  {
+    name: 'NMT_Erase_Serial_Eprom', value: '0x90', pm: false, pg4: true, bp2: true,
+    description: "The PM uses this value as NMT_Delete_Script; the BP2 and PG4 use it as NMT_Erase_Serial_Eprom. These are functionally similar commands that share the same command byte across different module types.",
+  },
+  {
+    name: 'NMT_Radio_Address', value: '0x92', pm: true, pg4: false, bp2: false,
+    description: "Sets the radio address of the targeted node.",
+  },
+  {
+    name: 'NMT_Wake_Remote_Modules', value: '0x93', pm: true, pg4: false, bp2: false,
+    description: "Wakes remote modules from a low-power or WOR sleep state.",
+  },
+  {
+    name: 'NMT_Network_On', value: '0x95', pm: true, pg4: false, bp2: false,
+    description: "Enables the radio network on the targeted node.",
+  },
+  {
+    name: 'NMT_Network_Off', value: '0x96', pm: true, pg4: false, bp2: false,
+    description: "Disables the radio network on the targeted node.",
+  },
+  {
+    name: 'NMT_Halt_RTC', value: '0x97', pm: true, pg4: false, bp2: false,
+    description: "Stops the real-time clock on the targeted module. Required before loading a new RTC value via NMT_Set_RTC.",
+  },
+  {
+    name: 'NMT_Clear_CAN_Errors', value: '0x98', pm: true, pg4: true, bp2: true,
+    description: "Clears accumulated CAN error counters on the targeted node.",
+  },
+  {
+    name: 'NMT_Set_Radio_Power', value: '0x99', pm: true, pg4: false, bp2: false,
+    description: "Sets the transmit power level of the radio on the targeted node.",
+  },
+  {
+    name: 'NMT_Init_NV_Memory', value: '0x9A', pm: true, pg4: false, bp2: false,
+    description: "Initializes non-volatile memory on the targeted node.",
+  },
+  {
+    name: 'NMT_Init_CAN', value: '0x9B', pm: true, pg4: false, bp2: false,
+    description: "Re-initializes the CAN controller on the targeted node.",
+  },
+  {
+    name: 'NMT_Reset_Radio_Counters', value: '0x9C', pm: true, pg4: false, bp2: false,
+    description: "Resets radio-layer statistics counters.",
+  },
+  {
+    name: 'NMT_Reset_OD_Defaults', value: '0x9D', pm: true, pg4: true, bp2: true,
+    description: "Resets the Object Dictionary entries on the targeted node to their compiled-in default values.",
+  },
+  {
+    name: 'NMT_Reset_Module', value: '0x9E', pm: true, pg4: true, bp2: true,
+    description: "Performs a full software reset of the targeted module.",
+  },
+  {
+    name: 'NMT_Enter_Low_Power', value: '0x9F', pm: true, pg4: true, bp2: true,
+    description: "Commands the targeted node to enter a low-power sleep state.",
+  },
+  {
+    name: 'NMT_Network_On_Only', value: '0xA0', pm: true, pg4: false, bp2: false,
+    description: "Enables the radio network without transitioning to a full operational state.",
+  },
+  {
+    name: 'NMT_Load_Pattern', value: '0xA5', pm: false, pg4: true, bp2: false,
+    description: "Loads a stimulation pattern into the targeted node.",
+  },
+  {
+    name: 'NMT_Read_Pattern', value: '0xA6', pm: false, pg4: true, bp2: false,
+    description: "Reads back the currently loaded stimulation pattern from the targeted node.",
+  },
+  {
+    name: 'NMT_Reset_Global_Vars', value: '0xA7', pm: true, pg4: false, bp2: false,
+    description: "Resets global script variables to their initial values.",
+  },
+  {
+    name: 'NMT_Turn_OFF_Alarms', value: '0xA8', pm: true, pg4: false, bp2: false,
+    description: "Turns off active alarms on the PM.",
+  },
+  {
+    name: 'NMT_Start_Script_Debug', value: '0xAB', pm: true, pg4: false, bp2: false,
+    description: "Enables script debug mode. In debug mode, script execution can be paused and stepped through.",
+  },
+  {
+    name: 'NMT_Stop_Script_Debug', value: '0xAC', pm: true, pg4: false, bp2: false,
+    description: "Disables script debug mode.",
+  },
+  {
+    name: 'NMT_Single_Step_Debug', value: '0xAD', pm: true, pg4: false, bp2: false,
+    description: "Advances script execution by one step while in debug mode.",
+  },
+  {
+    name: 'NMT_Stop_Script', value: '0xAE', pm: true, pg4: false, bp2: false,
+    description: "Immediately halts a currently running script without clearing it.",
+  },
+  {
+    name: 'NMT_Run_Script_Once', value: '0xB3', pm: true, pg4: false, bp2: false,
+    description: "Executes a script a single time rather than on its normal recurring schedule.",
+  },
+  {
+    name: 'NMT_Set_Script_Delay_Time', value: '0xB4', pm: true, pg4: false, bp2: false,
+    description: "Sets the execution delay interval for a script on the PM.",
+  },
+  {
+    name: 'NMT_Abort_Scripts', value: '0xB5', pm: true, pg4: false, bp2: false,
+    description: "Immediately aborts all currently running scripts on the PM.",
+  },
+  {
+    name: 'NMT_Clear_Startup_Script', value: '0xB6', pm: true, pg4: false, bp2: false,
+    description: "Removes the designated startup script from the PM.",
+  },
+  {
+    name: 'NMT_Clear_Shutdown_Script', value: '0xB7', pm: true, pg4: false, bp2: false,
+    description: "Removes the designated shutdown script from the PM.",
+  },
+  {
+    name: 'NMT_Flush_Log_Files', value: '0xB8', pm: true, pg4: false, bp2: false,
+    description: "Flushes any pending log file writes to persistent storage on the PM.",
+  },
+  {
+    name: 'NMT_Init_File_System', value: '0xB9', pm: true, pg4: false, bp2: false,
+    description: "Initializes the file system on the PM.",
+  },
+  {
+    name: 'NMT_Enable_Encryption', value: '0xBA', pm: true, pg4: false, bp2: false,
+    description: "Enables encrypted communication or storage on the PM.",
+  },
+  {
+    name: 'NMT_Erase_PM_Blocks', value: '0xBB', pm: true, pg4: false, bp2: false,
+    description: "Erases flash memory blocks on the PM.",
+  },
+  {
+    name: 'NMT_BlankCheck_PM_Flash_Mem', value: '0xBC', pm: true, pg4: false, bp2: false,
+    description: "Verifies that flash memory is blank on the PM.",
+  },
+  {
+    name: 'NMT_Set_VSYS', value: '0xBE', pm: true, pg4: false, bp2: false,
+    description: "Sets the system voltage output on the PM.",
+  },
+  {
+    name: 'NMT_Exit_Low_Power', value: '0xBF', pm: true, pg4: false, bp2: false,
+    description: "Commands the PM to exit a low-power state and resume normal operation.",
+  },
+  {
+    name: 'NMT_Enable_ForceAnodeOn', value: '0xC0', pm: false, pg4: true, bp2: false,
+    description: "Forces the anode output on. Used for hardware-level output override during testing or calibration.",
+  },
+  {
+    name: 'NMT_Disable_ForceAnodeOn', value: '0xC1', pm: false, pg4: true, bp2: false,
+    description: "Releases the forced anode output on the PG4.",
+  },
+  {
+    name: 'NMT_Update_Scheduler', value: '0xC2', pm: false, pg4: true, bp2: false,
+    description: "Triggers a scheduler update on the PG4, causing it to reload or reapply its stimulation timing parameters.",
+  },
+  {
+    name: 'NMT_Set_Gains', value: '0xD0', pm: false, pg4: false, bp2: true,
+    description: "Configures the analog input gain settings on the BP2.",
+  },
+  {
+    name: 'NMT_Set_AntiAliasing_High', value: '0xD1', pm: false, pg4: false, bp2: true,
+    description: "Sets the anti-aliasing filter to high cutoff frequency on the BP2.",
+  },
+  {
+    name: 'NMT_Set_AntiAliasing_Low', value: '0xD2', pm: false, pg4: false, bp2: true,
+    description: "Sets the anti-aliasing filter to low cutoff frequency on the BP2.",
+  },
+  {
+    name: 'NMT_Set_Analog_Pin_Config', value: '0xD3', pm: false, pg4: false, bp2: true,
+    description: "Configures the analog pin assignments or operating mode on the BP2.",
+  },
+  {
+    name: 'NMT_Read_Script_Lengths', value: '0xE0', pm: true, pg4: false, bp2: false,
+    description: "Returns the lengths of scripts stored on the PM.",
+  },
+  {
+    name: 'NMT_Read_Script_Revs', value: '0xE1', pm: true, pg4: false, bp2: false,
+    description: "Returns the revision numbers of scripts stored on the PM.",
+  },
+  {
+    name: 'NMT_Read_Script_IDs', value: '0xE2', pm: true, pg4: false, bp2: false,
+    description: "Returns the identifiers of scripts stored on the PM.",
+  },
+  {
+    name: 'NMT_Read_Script_CRCs', value: '0xE3', pm: true, pg4: false, bp2: false,
+    description: "Returns stored CRC values for loaded scripts.",
+  },
+  {
+    name: 'NMT_Calculate_Script_CRCs', value: '0xE4', pm: true, pg4: false, bp2: false,
+    description: "Triggers a live recalculation of CRC values for loaded scripts for integrity verification.",
+  },
+  {
+    name: 'NMT_Read_Memory_Now', value: '0xE8', pm: true, pg4: false, bp2: false,
+    description: "Triggers an immediate read of a targeted memory location on the PM.",
+  },
+  {
+    name: 'NMT_Set_nBOOT_HighOut', value: '0xF0', pm: true, pg4: false, bp2: false,
+    description: "Sets the nBOOT pin to high output state. Used during bootloader entry sequences or hardware-level diagnostics.",
+  },
+  {
+    name: 'NMT_Set_nBOOT_LowOut', value: '0xF1', pm: true, pg4: false, bp2: false,
+    description: "Sets the nBOOT pin to low output state.",
+  },
+  {
+    name: 'NMT_Set_nBOOT_In', value: '0xF2', pm: true, pg4: false, bp2: false,
+    description: "Sets the nBOOT pin to input mode.",
+  },
+  {
+    name: 'NMT_Enable_Gyro', value: '0xF3', pm: true, pg4: false, bp2: false,
+    description: "Enables the gyroscope peripheral on the PM.",
+  },
+  {
+    name: 'NMT_Disable_Gyro', value: '0xF4', pm: true, pg4: false, bp2: false,
+    description: "Disables the gyroscope peripheral on the PM.",
+  },
+];
+
+export function NMTCommandReference() {
+  const [deviceFilter, setDeviceFilter] = useState(null);
+  const [sortKey, setSortKey] = useState('value');
+  const [sortDir, setSortDir] = useState('asc');
+
+  const deviceKeys = ['pm', 'pg4', 'bp2'];
+  const deviceLabels = { pm: 'PM', pg4: 'PG4', bp2: 'BP2' };
+
+  function toggleSort(key) {
+    if (sortKey === key) {
+      setSortDir(d => d === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortKey(key);
+      setSortDir('asc');
+    }
+  }
+
+  const filtered = useMemo(() => {
+    let rows = deviceFilter
+      ? nmtCommands.filter(r => r[deviceFilter])
+      : nmtCommands;
+    return [...rows].sort((a, b) => {
+      let av = a[sortKey] ?? '';
+      let bv = b[sortKey] ?? '';
+      if (sortKey === 'value') {
+        av = parseInt(av, 16);
+        bv = parseInt(bv, 16);
+      } else {
+        av = av.toLowerCase();
+        bv = bv.toLowerCase();
+      }
+      if (av < bv) return sortDir === 'asc' ? -1 : 1;
+      if (av > bv) return sortDir === 'asc' ? 1 : -1;
+      return 0;
+    });
+  }, [deviceFilter, sortKey, sortDir]);
+
+  const SortIndicator = ({ col }) =>
+    sortKey !== col
+      ? <span style={{ opacity: 0.3, marginLeft: 4 }}>↕</span>
+      : <span style={{ marginLeft: 4 }}>{sortDir === 'asc' ? '↑' : '↓'}</span>;
+
+  const Check = ({ active }) => (
+    <span style={{ color: active ? 'var(--ifm-color-success, #2da44e)' : 'var(--ifm-color-secondary-darkest, #aaa)' }}>
+      {active ? '✓' : '—'}
+    </span>
+  );
+
+  const btnStyle = (active) => ({
+    padding: '4px 12px',
+    borderRadius: '4px',
+    border: '1px solid var(--ifm-color-primary)',
+    background: active ? 'var(--ifm-color-primary)' : 'transparent',
+    color: active ? '#fff' : 'var(--ifm-color-primary)',
+    cursor: 'pointer',
+    fontSize: '0.85rem',
+    fontWeight: '600',
+  });
+
+  const thStyle = { cursor: 'pointer', userSelect: 'none', whiteSpace: 'nowrap' };
+
+  return (
+    <div>
+      {/* Filter controls */}
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '20px' }}>
+        <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.85rem', opacity: 0.7 }}>Filter by device:</span>
+          {deviceKeys.map(key => (
+            <button key={key} onClick={() => setDeviceFilter(deviceFilter === key ? null : key)} style={btnStyle(deviceFilter === key)}>
+              {deviceLabels[key]}
+            </button>
+          ))}
+          {deviceFilter && (
+            <button
+              onClick={() => setDeviceFilter(null)}
+              style={{ padding: '4px 8px', borderRadius: '4px', border: '1px solid #ccc', background: 'transparent', cursor: 'pointer', fontSize: '0.8rem', opacity: 0.6 }}
+            >✕ Clear</button>
+          )}
+        </div>
+        <span style={{ fontSize: '0.8rem', opacity: 0.5, marginLeft: 'auto' }}>
+          {filtered.length} command{filtered.length !== 1 ? 's' : ''}
+          {deviceFilter ? ` on ${deviceLabels[deviceFilter]}` : ''}
+        </span>
+      </div>
+
+      {/* Table */}
+      <table>
+        <thead>
+          <tr>
+            <th style={thStyle} onClick={() => toggleSort('name')}>Command Name<SortIndicator col="name" /></th>
+            <th style={thStyle} onClick={() => toggleSort('value')}>Value<SortIndicator col="value" /></th>
+            {/* <th>Description</th> */}
+            <th style={{ textAlign: 'center' }}>PM</th>
+            <th style={{ textAlign: 'center' }}>PG4</th>
+            <th style={{ textAlign: 'center' }}>BP2</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filtered.map((row, i) => (
+            <tr key={i}>
+              <td style={{ whiteSpace: 'nowrap' }}><code>{row.name}</code></td>
+              <td style={{ whiteSpace: 'nowrap' }}><code>{row.value}</code></td>
+              {/* <td style={{ fontSize: '0.875rem' }}>{row.description}</td> */}
+              <td style={{ textAlign: 'center' }}><Check active={row.pm} /></td>
+              <td style={{ textAlign: 'center' }}><Check active={row.pg4} /></td>
+              <td style={{ textAlign: 'center' }}><Check active={row.bp2} /></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+Network Management (NMT) is a CANopen protocol for sending commands to modules, changing their operational states, and managing overall network behavior. The effect of these commands is to change the mode of the device (or devices collectively on the network). The command table is maintained as a list of `#defines` in the CanFest code base. Each module in the COSMIIC system maintains its own version of `def.h` in the application source code for each of the modules at `canFest/include/def.h`, and not all NMT commands are implemented by every module.
+
+---
+
+## Triggering an NMT Command
+
+Users can control the use of NMT commands through NNP-API on MATLAB and using .nnpscripts. NMT commands must specify the target node, the specific hex code of the command, and relevant parameters.
+
+- **`node`**: Target node ID (`0` = broadcast, `7` = PM, `1`–`15` = RM)
+- **`command`**: NMT command as a hex string (e.g., `'95'`) or decimal integer
+- **`param1`**, **`param2`** *(optional)*: Additional parameters (0–255)
+
+### NMT in NNP-API
+
+The [**NNP-API**](../Software/MATLAB-Interface/NNP-API.md) MATLAB library provides the `nmt` function in `NNPCORE` for sending NMT commands directly to any node on the network.
+
+```matlab
+dataOut = nnp.nmt(node, command)
+dataOut = nnp.nmt(node, command, param1)
+dataOut = nnp.nmt(node, command, param1, param2)
+```
+
+**Examples:**
+
+```matlab
+nnp.nmt(7, '95')       % Turn network ON (PM)
+nnp.nmt(7, '8D', 1)    % Run script ID 1 on PM
+```
+
+### NMT in .nnpscript
+
+Within a `.nnpscript` file, use the `NMT0`, `NMT1`, or `NMT2` opcodes depending on the number of parameters required.
+
+```nnpscript
+NMT0 <NODE> <CMD> 
+NMT1 <NODE> <CMD> <PARAM1>
+NMT2 <NODE> <CMD> <PARAM1> <PARAM2>
+```
+
+**Examples:**
+
+```nnpscript
+NMT0 7 0x95       % Turn network ON (PM)
+NMT1 7 0x8D 1     % Run script ID 1 on PM
+```
+
+---
+
+## NMT Command Reference Table
+
+<NMTCommandReference />
+
+---
+
+## Coming Soon...
+
+Some NMTs have a System Mode dependency and Target Node dependency. In other words, the NMT may be non-functional under certain system modes or if sent to an incompatible node. We will be adding more detailed information about these dependencies for each command in the future.

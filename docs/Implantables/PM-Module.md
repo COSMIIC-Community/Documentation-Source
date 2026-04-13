@@ -28,19 +28,19 @@ The power module is designed to be implanted in the torso, typically either ches
 
 All files and drawings for the design of the Power Module are available on the COSMIIC GitHub here:
 
-:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Hardware/tree/main/Mechanical%20Design%20CAD%20Files)**
+:link: **[Implantables-PM-Hardware/"Mechanical Design CAD Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-Hardware/tree/main/Mechanical%20Design%20CAD%20Files)**
 
 ### PCB and Schematics
 
 This repository is up-to-date with the newest version of the Power Module circuit board. This newest version is the PM1C, updated from the PM1B. Our team transitioned the design files from Altium to KiCad to enable increased free and open source interactions.
 
-:link: **[Implantables-PM-Hardware/"NNP-DWG-115-004-000 PCB Files" on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Hardware/tree/main/NNP-DWG-115-004-000%20PCB%20Files)**
+:link: **[Implantables-PM-Hardware/"NNP-DWG-115-004-000 PCB Files" on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-Hardware/tree/main/NNP-DWG-115-004-000%20PCB%20Files)**
 
 ### Firmware
 
-:link: **[Implantables-PM-Application on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Application)**
+:link: **[Implantables-PM-App on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-App)**
 
-:link: **[Implantables-PM-Bootloader on COSMIIC GitHub](https://github.com/COSMIIC-Inc/Implantables-PM-Bootloader)**
+:link: **[Implantables-PM-Boot on COSMIIC GitHub](https://github.com/COSMIIC-Community/Implantables-PM-Boot)**
 
 Guidance on the build and flash process are incoming.
 

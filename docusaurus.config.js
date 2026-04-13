@@ -11,16 +11,16 @@ const config = {
   favicon: 'img/Cosmiic_favicon-150x150.png',
 
   // Set the production url of your site here
-  url: 'https://cosmiic-inc.github.io',
+  url: 'https://cosmiic-community.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'COSMIIC-Inc', // Usually your GitHub org/user name.
-  projectName: 'COSMIIC-Inc.github.io', // Usually your repo name.
-  deploymentBranch: 'main', //  deployment branch on COSMIIC-Inc.github.io repo
+  organizationName: 'COSMIIC-Community', // Usually your GitHub org/user name.
+  projectName: 'COSMIIC-Community.github.io', // Usually your repo name.
+  deploymentBranch: 'main', //  deployment branch on COSMIIC-Community.github.io repo
 
   // Handling bad links and images
   onBrokenLinks: 'warn',
@@ -51,18 +51,19 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/', // Serve the docs at the site's root example.com/docs/intro becomes example.com with other docs at example.com/other-doc
-          // Please change this to your repo.
+          editUrl: 'https://github.com/COSMIIC-Community/COSMIIC-Documentation/blob/main/',
+          showLastUpdateTime: true,
         },
         blog: false, // optional: disable the blog plugin
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
         gtag: {
-          trackingID: 'G-M6W11VVRPY',
+          trackingID: 'G-LXFTE1J7LY',
           anonymizeIP: true,
         },
         googleTagManager: {
-          containerId: 'GTM-N93QS9GJ',
+          containerId: 'GTM-TDS2SC8F',
         },
         sitemap: {
           changefreq: 'weekly',
@@ -104,7 +105,7 @@ const config = {
         items: 
         [
           {
-            href: 'https://github.com/COSMIIC-Inc',
+            href: 'https://github.com/COSMIIC-Community',
             label: 'GitHub',
             position: 'right',
           },
@@ -116,11 +117,6 @@ const config = {
           {
             href: 'https://cosmiic.atlassian.net/servicedesk/customer/portal/1/group/1/create/19',
             label: 'Contact',
-            position: 'right',
-          },
-          {
-            href: 'https://cosmiic.org/join-now/',
-            label: 'Join Newsletter',
             position: 'right',
           },
         ],
@@ -143,6 +139,36 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['matlab'],
       },
+      algolia: {
+      // The application ID provided by Algolia
+      appId: 'GKQORT55LO',
+
+      // Public API key: it is safe to commit it
+      apiKey: '5b3acbd17f49a2d2324650e240d123d3',
+
+      indexName: 'COSMIIC Documentation',
+
+      // Optional: see doc section below
+      contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      replaceSearchResultPathname: {
+        from: '/docs/', // or as RegExp: /\/docs\//
+        to: '/',
+      },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: 'search',
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false,
+    },
     }),
 };
 
