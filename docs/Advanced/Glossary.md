@@ -14,33 +14,21 @@ Definitions of common terms used on the site
 
 - **Bandpass Filter --** A signal processing filter that extracts a specific frequency band from a recorded signal. Used in the BP2 module for EMG signal processing.
 
-- **Battery Fuel Gauge --** An integrated circuit that monitors the battery state and reports capacity, voltage, current, and cycle count.
-
 - **Between Channel Timing --** The configurable delay (default 1 ms) between stimulation pulses delivered on different channels within the same SYNC period.
 
 - **Biocompatibility --** The assessment of a material's safety and compatibility with biological tissue. Required for all implanted and patient-contacting components.
 
 - **Biphasic Waveform --** A two-phase stimulation pulse consisting of a positive phase followed by a negative phase, designed to ensure charge balance and safe tissue stimulation.
 
-- **BLE (Bluetooth Low Energy) --** An optional wireless interface protocol supported by newer Wireless Link hardware for external device connectivity.
-
 - **Bootloader --** A special state of the microprocessor that enables a download of a new application program. The state is protected by safety interlocks. A bootloader program runs in a protected section of the microprocessor memory so that it cannot be modified or erased.
 
 - **BP2 (Biopotential Recording Module) --** A remote implanted module for recording myoelectric signals from 2 channels. The BP2 processes EMG signals used for neuroprosthetic control.
 
-- **BUSA / BUSB --** The two-conductor network bus lines on a development board frame. BUSA uses the top two pins and BUSB uses the bottom two pins; each requires a separate jumper connection.
+- **CAN (Controller Area Network) --** A low-level industry-standard network protocol used in the COSMIIC System.
 
-- **CAN (Controller Area Network) --** An industry-standard network protocol used in the COSMIIC System for low-latency, deterministic communication with robust error checking.
-
-- **CAN-ID --** The message identifier in the CAN protocol. For CANopen, the format combines a function code with the node ID (e.g., 600h + Node ID for an SDO client request).
-
-- **CANopen --** A set of specifications and protocols built on top of CAN that enables modular devices to communicate using a producer-consumer messaging model and a standardized Object Dictionary.
-
-- **Charge Balance --** The condition in which the positive and negative charge delivered by a biphasic stimulation pulse are equal and opposite, ensuring zero net charge delivery to tissue.
+- **CANopen --** A high-layer set of specifications and protocols built on top of CAN that enables modular devices to communicate using a producer-consumer messaging model and a standardized Object Dictionary.
 
 - **COB-ID --** The communication object identifier used to address PDO and SDO messages in CANopen.
-
-- **Control Editor --** A legacy Windows software application for COSMIIC System configuration and operation. It has been superseded by the NNP-API.
 
 - **Control Tower (CT) --** A formerly used external device that served as a gateway between a computer and the implanted system. Now obsolete. By convention, it was assigned node number 8.
 
@@ -78,21 +66,13 @@ Definitions of common terms used on the site
 
 - **JTAG --** A hardware interface standard used for debugging and flashing firmware onto microcontrollers.
 
-- **JST Connector --** A standardized miniature connector type used for battery connections to the Power Module frame board.
-
-- **Li-ion Battery / Lithium-ion Battery --** The rechargeable battery type used in the Power Module, consisting of three cells connected in parallel.
-
 - **Log / Logging --** A data storage mechanism in the Power Module for recording system events and parameter values over time.
-
-- **Log Cursor --** The current write position within the Power Module's log storage area.
 
 - **LQI (Link Quality Indication) --** A radio metric indicating the quality of the wireless link between the Wireless Link and the Power Module.
 
 - **Magnetic Switch --** An emergency shutdown mechanism integrated into the Power Module that is activated by a strong static magnetic field, stopping all stimulation immediately.
 
 - **MATLAB --** The programming environment used for developing custom applications with the NNP-API.
-
-- **Mean Absolute Value --** A signal processing metric computed by the BP2 module as part of its EMG signal processing pipeline.
 
 - **MedRadio --** A medical-grade radio frequency protocol operating at 433 MHz used for wireless communication between the Wireless Link and the implanted Power Module.
 
@@ -106,9 +86,7 @@ Definitions of common terms used on the site
 
 - **Network Port --** A connection point on a module for attaching network cables.
 
-- **Neuromodulation --** The use of electrical stimulation to modulate nerve and/or muscle activity for therapeutic or research purposes.
-
-- **Neuroprosthetics --** Implanted or external devices that restore lost sensory or motor function through electrical stimulation and signal processing.
+- **Neuroprosthetics --** Implanted or external devices that restore lost sensory or motor function through electrical stimulation.
 
 - **NNP (Networked Neuroprosthetic) System --** An implantable neuromodulation system originally invented at Case Western Reserve University, now open source as the COSMIIC System
 
@@ -121,8 +99,6 @@ Definitions of common terms used on the site
 - **Node / Node Number --** The value assigned to a module when it is first configured that allows it to be uniquely referenced from the Control Editor software and embedded scripts. All permanent devices have a node number. Node numbers typically exist between 1 and 20 inclusively. By convention, the Power Module is assigned node number 7 and the Control Tower is assigned node number 8.
 
 - **OD (Object Dictionary) --** A standardized map of all accessible data and parameters across all network modules, addressed by a 16-bit index and an 8-bit sub-index.
-
-- **OD Restore --** A file containing Object Dictionary settings that can be applied to a module to restore its configuration to default values on bootup.
 
 - **PDO (Process Data Object) --** A CANopen broadcast mechanism for continuous or event-driven data transfer. Configured as either a Transmit PDO (TPDO) or Receive PDO (RPDO).
 
@@ -152,13 +128,9 @@ Definitions of common terms used on the site
 
 - **SDO (Service Data Object) --** A CANopen request-response protocol for reading or writing individual Object Dictionary entries. More flexible but less efficient than PDOs.
 
-- **Serial Port --** The USB virtual serial port connection between a host computer and the Wireless Link, operating at 230400 baud.
-
 - **Smart Charger --** An external device that combines the Wireless Link and a charging coil into a single unit for simultaneously communicating with and charging the Power Module.
 
 - **Stack Usage --** A diagnostic metric reporting the memory utilization percentage for each of the 9 system tasks running on the Power Module.
-
-- **Strain Relief --** A protective feature at cable ends that provides mechanical stiffness and durability at the point of insertion into a module port.
 
 - **Sub-Index / Subindex --** An 8-bit address used to access a specific field within a multi-field Object Dictionary entry.
 
@@ -180,6 +152,6 @@ Definitions of common terms used on the site
 
 - **Wake Interval --** The period at which the Power Module checks for incoming radio messages during Wake-on-Radio (WOR) mode, configurable from 14 to 255 ms (default 20 ms).
 
-- **Wireless Link (WL) --** The external radio interface device (Access Point) that connects a desktop computer to the implanted COSMIIC System via USB, enabling wireless communication with the Power Module.
+- **Wireless Link (WL) --** The external radio interface device (Access Point) that bridges to the implanted COSMIIC System through wireless communication with the Power Module.
 
 - **WOR (Wake-on-Radio) --** A low-power mode in which the Power Module periodically awakens to check for incoming radio messages, reducing power consumption at the cost of increased communication latency.
