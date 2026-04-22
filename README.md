@@ -18,4 +18,4 @@ Files in the /docs/ folder of this repository are licensed under CC-BY-4.0. This
 
 Note: Attribution is REQUIRED for sharing of documentation, modified or unmodified. In the case you are redistributing COSMIIC documentation, CC-BY-4.0 mandates that "You must give appropriate credit, provide a link to the license, and indicate if changes were made" (per **[legal code page](https://creativecommons.org/licenses/by/4.0/legalcode.en)**).
 
-Files outsides of the /docs/ folder of this repository are licensed under the MIT License. Refer to the **[license text](https://mit-license.org/)** to understand your permissions.
+Files outside of the /docs/ folder of this repository are licensed under the MIT License. Refer to the **[license text](https://mit-license.org/)** to understand your permissions.
